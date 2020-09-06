@@ -6,7 +6,13 @@
  * @flow strict-local
  */
 
-const { Client, custom, Issuer } = require('openid-client');
+// const { Client, custom, Issuer } = require('openid-client');
+
+// const oi = require('openid-client');
+
+
+// const got = require('./mgk/got');
+
 
 
 import React from 'react';
@@ -27,6 +33,11 @@ import {
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
 
+const fetcho = require('./fetchSimple');
+
+const purina = require('./purina')
+
+
 
 const crypto = require('./mgk/crypto');
 const secret = 'open-sesame';
@@ -36,6 +47,43 @@ const hash = crypto.createHmac('sha256', secret)
 console.log("hasho::",hash);
 
 //
+// fetch('https://jsonplaceholder.typicode.com/posts/1', {
+//          method: 'GET'
+//       })
+//       .then((response) => response.json())
+//       .then((responseJson) => {
+//          console.log('response',responseJson);
+//         //  this.setState({
+//         //     data: responseJson
+//         //  })
+//       })
+//       .catch((error) => {
+//          console.error(error);
+//       });
+
+//
+// fetcho({
+//   input1: 'ajua',
+//   input2:'tkt'
+// }, (res) => {
+//   {console.log({res})}
+// })
+
+fetcho({
+  username: 'juanman234@gmail.com',
+  password: '1234'
+}, (res) => {
+
+  console.log({res});
+})
+
+
+purina({
+  input1:'a',
+  input2:'b'
+}, (res) => {
+  console.log({res})
+})
 
 // Issuer.discover('https://test-identity.wisr.tech/.well-known/openid-configuration') // => Promise
 //     .then(function(googleIssuer) {
@@ -61,6 +109,20 @@ console.log("hasho::",hash);
 
 
 //
+
+
+
+// (async () => {
+//   const {body} = await got.post('https://httpbin.org/anything', {
+//       json: {
+//           hello: 'world'
+//       },
+//       responseType: 'json'
+//   });
+
+//   console.log(body.data);
+//   //=> {hello: 'world'}
+// })();
 
 
 
